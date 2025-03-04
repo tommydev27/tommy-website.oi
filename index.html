@@ -33,6 +33,12 @@
   <body>
   <style>
     /* Reset */
+    @media (prefers-color-scheme: dark) {
+    .glow-text {
+        color: #00ff00;
+    }
+}
+
     * {
       margin: 0;
       padding: 0;
@@ -40,9 +46,7 @@
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      color: black;
-      background-image: white;
+      font-family: sans-serif;
     }
     
 /* Gaya untuk container dan header */
@@ -63,14 +67,14 @@
 }
 
 #halaman1 h1 {
-  font-size: 15px;
+  font-size: 20px;
   margin-top: -10px;
   text-align: left; 
 }
 
 
 #halaman1 p {
-  font-size: 12px;
+  font-size: 15px;
   margin-bottom: 0px;
   text-align: left; 
 
@@ -79,7 +83,7 @@
 #halaman1 .form-control {
   padding: 5px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+
   border-radius: 5px;
   font-size: 16px;
 }
@@ -92,12 +96,12 @@
 }
 
 #halaman2 h1 {
-  font-size: 15px;
+  font-size: 20px;
   margin-top: -20px;
 }
 
 #halaman2 p {
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 2px;
   margin-bottom: 3px;
 }
@@ -109,6 +113,7 @@
       justify-content: space-around;
       margin-top: 0px;
       padding: 10px 0;
+      gap: 20px;
     }
 
     .menu-item {
@@ -116,12 +121,13 @@
       cursor: pointer;
       text-decoration: none;
       display: flex;
+
       flex-direction: column;
       align-items: center;
     }
 
 .menu-item i {
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 0px;
   transition: transform 0.2s ease, color 0.2s ease;
   margin-top: 0px;
@@ -133,7 +139,7 @@
 }
 
 
-/* Menghilangkan efek kedip pada ponsel saat klik tombol */
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -164,24 +170,24 @@
   border-radius: 10px;
 }
 #Ai h1 {
-  font-size: 15px;
+  font-size: 20px;
   margin-top: -10px;
   text-align: left; 
 }
 
 #Ai p {
-  font-size: 12px;
+  font-size: 15px;
   margin-bottom: 5px;
   text-align: left; 
 }
 
     .promptBox {
       width: 100%;
+      font-family: sans-serif;
       height: 95px;
       padding: 5px;
       margin-bottom: 5px;
-      border: 1px solid #789da4;
-      box-shadow: 1px 1px 1px #bebebe, -1px -1px 1px #ffffff;
+      border: 1px solid #dddcdc;
       border-radius: 5px;
       font-size: 14px;
     }
@@ -220,12 +226,12 @@
     <nav class="top-menu">
       
       <div class="menu-item" data-target="#Ai">
-        <i class="fab fa-gg"></i>
+        <i class="fab fa-earlybirds"></i>
         <span>create img</span>
       </div>
       
       <div class="menu-item" data-target="#halaman1">
-        <i class="fab fa-asymmetrik"></i>
+        <i class="fab fa-github-alt"></i>
         <span>IMG AI</span>
       </div>
       
@@ -239,9 +245,6 @@
         <span>Catatan</span>
       </div>
     </nav>
-    
-    <hr style="width: 95%; margin: 0 auto; margin-top: -5px;">
-
       </div>
           </div>
 <div id="content-container" style="
@@ -257,60 +260,53 @@
             <div class="generator">
       <div class="input">
    <!-- Input teks sebagai kotak teks -->
-      <textarea class="promptBox" id="prompt" placeholder="Tulis deskripsi kreatif Anda di sini..."></textarea>
+      <textarea class="promptBox" id="prompt" placeholder="Tulis deskripsi "></textarea>
       </div>
 
-      <button id="generate" style="background-color: #007bff; color: white; border: none; border-radius: 8px; font-size: 12px; width:150px; height: 30px; cursor: pointer; margin-top: -10px; font-weight: bold;">
+      <button id="generate" style="background-color: #0074f1; color: white; border: none; border-radius: 5px; font-size: 16px; width:150px; height: 30px; cursor: pointer; margin-top: -10px; font-weight: bold;">
       Generate Images
     </button>
 
     <div class="loader" id="loading-spinner"></div>
       <div class="output">
-        <h2 id="generatedText" style="font-size: 15px; margin-top: 5px;">Generated Images:</h2>
+        <h2 id="generatedText" style="font-size: 16px; margin-top: 5px;">Generated Images:</h2>
         
       <div id="image-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;"></div>
        <a id="dlButton" href="#" download style="display: none;">Download</a>
       </div>
     </div>
 
-    <div id="preset-images" style="margin-top: 30px;">
-    <h3 style="font-size: 12px;">Gambar Preset klik untuk buat</h3>
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+    <div id="preset-images" style="margin-top: 30px; ">
+    <h3 style="font-size: 15px;">Gambar Preset klik untuk buat</h3>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;">
       <div>
         <img src="https://iili.io/2S9pr8v.md.jpg" alt="Glowing Goldfish" data-description="Create images of glowing goldfish with morning dew seaweed and crystal roses with white neon light. Beautiful Korean mermaid woman dressed in Real HD realistic batik sitting on very big and beautiful flowers" style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
+
       </div>
       <div>
         <img src="https://iili.io/2SJKczb.md.jpg" alt="Beautiful Mermaid" data-description="beautiful owl with long colorful feathers, perched on a cherry tree, with a snow mountain as a background, a cool view with the light of the wind flowing beautiful neon colors" style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
+
         </div>
             <div>
                 <img src="https://iili.io/2UmAAJf.md.jpg" alt="Morning Dew" data-description="beautiful Korean mermaid, underwater view filled with coral, seaweed, sand, colorful glass, Koi fish (Cyprinus carpio), Discus fish (Symphysodon spp.), Guppy fish (Poecilia reticulata) Betta fish (Betta splendens), lively comet fish (Carassius auratus), and gentle sea turtles" style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
-      </div>
+          </div>
       <div>
         <img src="https://iili.io/2SqLNDv.md.jpg" alt="Morning Dew" data-description="a beautiful Korean woman, with long wings like a butterfly with colorful patterns, with flowing neon sand light, very beautiful, sky garden background" style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
       </div>
-      
            <div>
               <img src="https://iili.io/2UmYAE7.md.jpg" alt="Crystal Roses" data-description="A queen was at the door of the Boro Budur temple palace, escorted by the guards" style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
-      </div>
+           </div>
           <div>
               <img src="https://iili.io/2UmcJfI.md.jpg" alt="Crystal Roses" data-description="Wanita korea cyborg berbadan robot, dengan teknologi. sedang mengetik komputer dengan tampilan programmer seperti radar dan cahaya mengalirkan neon dan tulisan di komputer" style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
-      </div>
+             </div>
           <div>
               <img src="https://iili.io/2UmjO0J.th.jpg" alt="Crystal Roses" data-description="Seorang wanita cantik korea berhijab berpakaian batik tiga peniti kain sulam, di belakangnya ada kursi panjang dan pohon sakura, dan sekitarnya ada taman bunga warna-warni berbentuk bundaran melingkari." style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
-      </div>
+           </div>
            <div>
               <img src="https://iili.io/2SJLcg4.md.jpg" alt="Crystal Roses" data-description="A majestic phoenix is reborn from digital ashes in a holographic blaze of shiny iron nickel wings, giving rise to a beautiful Korean woman wearing a singlet tactical pants tactical boots with a crystal clear ultra-real power light" style="width: 100%; height: auto; cursor: pointer; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="text-align: center; margin-top: 5px;">prompt:</p>
-      </div>
+          </div>
     </div>
-<img src="https://iili.io/26UuBFp.md.webp" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; pointer-events: none;">
+<img src="https://iili.io/26UuBFp.md.webp" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; pointer-events: none; margin-top: 10px;">
 
       
 <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333; background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; border-radius: 8px; max-width: 600px; margin: 20px auto; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
@@ -412,7 +408,7 @@ presetImages.forEach((image) => {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #e0e0e0;
+        background-color: #dddcdc;
         border-radius: 8px;
         overflow: hidden;
     }
@@ -429,10 +425,11 @@ presetImages.forEach((image) => {
     }
 
     button.unique-save-btn {
-        background-color: #007bff;
+        background-color: #0074f1;
         color: white;
         border: none;
-        padding: 5px;
+        font-size: 15px;
+        padding: 8px;
         font-weight: bold;
         border-radius: 5px;
         cursor: pointer;
@@ -461,9 +458,6 @@ presetImages.forEach((image) => {
         .image-slider-container {
         overflow-x: auto;
         white-space: nowrap;
-        background-color: #ddf0f4;
-        border: 1px solid #789da4;
-        box-shadow: 1px 1px 1px #bebebe, -1px -1px 1px #ffffff;
         padding: 5px;
         border-radius: 8px;
 
@@ -523,13 +517,13 @@ presetImages.forEach((image) => {
         </div>
             <div id="loader" class="loader"></div>
         <div class="scroll-container">
- <textarea id="uniquePromptInput" class="unique-prompt-input" placeholder="Tulis deskripsi kreatif Anda di sini..." style="width: 100%; margin-top: 8px; height: 95px; padding: 5px; border: 1px solid #8ba18c; border-radius: 5px; font-size: 14px;"></textarea>
+ <textarea id="uniquePromptInput" class="unique-prompt-input" placeholder="Tulis deskripsi kreatif Anda di sini..." style="width: 100%; margin-top: 8px; height: 95px; padding: 5px; border: 1px solid #dddcdc; border-radius: 5px; font-size: 14px; font-family: sans-serif;"></textarea>
 
         </div>
         <!-- Size Controls -->
             <div>
-                <label for="uniqueHeightInput" style="font-size: 13px; font-weight: bold;">height: ukuran panjang gambar</label>
-                <select id="uniqueHeightInput" class="unique-height-input">
+                <label for="uniqueHeightInput" style="font-size: 13px; font-weight: bold; ">height: ukuran panjang gambar</label>
+                <select id="uniqueHeightInput" class="unique-height-input" style="border: 1px solid #dddcdc; border-radius: 5px;">
                     <option value="400">400s</option>
                     <option value="500">500Px</option>
                     <option value="600">600Px</option>
@@ -538,8 +532,8 @@ presetImages.forEach((image) => {
                 </select>
             </div>
 
-<button id="uniqueGenerateBtn" class="unique-generate-btn" style="background-color:#007bff; color: white; border: none; font-weight: bold; border-radius: 5px;">Generate Image</button>
-<button id="uniqueSaveBtn" class="unique-save-btn" disabled>Save Image</button>
+        <button id="uniqueGenerateBtn" class="unique-generate-btn" style="background-color:#0074f1; color: white; border: none; font-weight: bold; border-radius: 5px; padding: 8px; font-size: 15px;">Generate Image</button>
+        <button id="uniqueSaveBtn" class="unique-save-btn" disabled>Save Image</button>
         
            <p style="text-align: left; margin-top: 5px; margin-bottom: 5px;">Buat prompt sertakan kata kunci lebih detail dan jelas untuk menghasilkan gambar coba juga dengan berbagai bahasa</p>
            </img>
@@ -712,8 +706,8 @@ Pilih Wajah.<br> penggunaan (TERBATAS Masih dalam pengembangan)</p>
         .image-container {
             display: flex;
             justify-content: space-between;
-            border: 1px solid #789da4;
-            box-shadow: 1px 1px 1px #bebebe, -1px -1px 1px #ffffff;
+            border: 1px solid #e2e2e2;
+
             width: 100%;
             padding: 5px;
             border-radius: 5px;
@@ -776,7 +770,7 @@ Pilih Wajah.<br> penggunaan (TERBATAS Masih dalam pengembangan)</p>
     <input type="file" id="swapAI_image1" accept="image/*" style="display: none;">
     <input type="file" id="swapAI_image2" accept="image/*" style="display: none;">
 
-    <button id="swapAI_swapButton" style="background-color: #007bff; color: white; border: none; border-radius: 8px; font-size: 12px;  cursor: pointer; font-weight: bold;">Perform Face Swap</button>
+    <button id="swapAI_swapButton" style="background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 15px;  cursor: pointer; font-weight: bold; padding: 8px;">Perform Face Swap</button>
     <button id="swapAI_saveButton">Save Result</button>
     <div class="loader" id="swapAI_loader"></div>
     <p id="swapAI_resultMessage"></p>
